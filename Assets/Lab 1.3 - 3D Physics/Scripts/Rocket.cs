@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Rocket : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Rocket : MonoBehaviour
 	public Rigidbody RocketRB;
 	public float Thrust;
 	public ParticleSystem Flames;
+	public Text VelocityText;
 
 	private void Update()
 	{
@@ -21,6 +23,8 @@ public class Rocket : MonoBehaviour
 			Flames.Stop();
 			EngineOn = false;
 		}
+
+		VelocityText.text = (Mathf.Round(RocketRB.velocity.y * 100f)/100f).ToString();
 	}
 
 	private void FixedUpdate()

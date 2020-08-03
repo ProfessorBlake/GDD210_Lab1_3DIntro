@@ -29,4 +29,14 @@ public class WeightSpin : MonoBehaviour
 			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, Time.deltaTime * 2f);
 		}
 	}
+
+	private void OnDrawGizmosSelected()
+	{
+		Gizmos.color = Color.red;
+		Gizmos.DrawLine(transform.position, transform.forward);
+		Gizmos.color = Color.green;
+		Gizmos.DrawLine(transform.position, transform.up);
+		Gizmos.color = Color.blue;
+		Gizmos.DrawLine(transform.position, transform.right);
+	}
 }
