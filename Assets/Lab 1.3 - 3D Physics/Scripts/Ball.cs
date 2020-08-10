@@ -23,4 +23,10 @@ public class Ball : MonoBehaviour
 		count = 0;
 		BallText.text = count.ToString();
 	}
+
+	private void OnTriggerStay(Collider other)
+	{
+		count = 0;
+		BallText.text = "TOO HIGH!";
+	}
 }

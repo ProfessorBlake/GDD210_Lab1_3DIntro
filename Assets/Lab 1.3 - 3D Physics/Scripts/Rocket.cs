@@ -34,4 +34,5 @@ public class Rocket : MonoBehaviour
 			RocketRB.AddForce(new Vector3(0f, Thrust, 0f), ForceMode.Acceleration);
 		}
 	}
+
 }

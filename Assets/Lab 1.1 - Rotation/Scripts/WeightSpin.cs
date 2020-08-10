@@ -10,17 +10,37 @@ public class WeightSpin : MonoBehaviour
 
 	private void Update()
 	{
-		if (Input.GetKey(KeyCode.X))
+		//Hold shift to rotate in world space
+		if (Input.GetKey(KeyCode.LeftShift))
 		{
-			transform.Rotate(new Vector3(Xspin, 0f, 0f) * Time.deltaTime);
+			if (Input.GetKey(KeyCode.X))
+			{
+				transform.Rotate(Vector3.right,Xspin * Time.deltaTime,Space.World);
+			}
+			if (Input.GetKey(KeyCode.Y))
+			{
+				transform.Rotate(Vector3.up, Yspin * Time.deltaTime, Space.World);
+			}
+			if (Input.GetKey(KeyCode.Z))
+			{
+				transform.Rotate(Vector3.forward, Zspin * Time.deltaTime, Space.World);
+			}
 		}
-		if (Input.GetKey(KeyCode.Y))
+		//Else rotate on local axis
+		else
 		{
-			transform.Rotate(new Vector3(0f, Yspin, 0f) * Time.deltaTime);
-		}
-		if (Input.GetKey(KeyCode.Z))
-		{
-			transform.Rotate(new Vector3(0f, 0f, Zspin) * Time.deltaTime);
+			if (Input.GetKey(KeyCode.X))
+			{
+				transform.Rotate(new Vector3(Xspin, 0f, 0f) * Time.deltaTime, Space.Self);
+			}
+			if (Input.GetKey(KeyCode.Y))
+			{
+				transform.Rotate(new Vector3(0f, Yspin, 0f) * Time.deltaTime, Space.Self);
+			}
+			if (Input.GetKey(KeyCode.Z))
+			{
+				transform.Rotate(new Vector3(0f, 0f, Zspin) * Time.deltaTime, Space.Self);
+			}
 		}
 		
 
