@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TeleportBall : MonoBehaviour
 {
+	[SerializeField] private float wrapDistance;
+
 	public Rigidbody BallRB;
 
 	private void Update()
@@ -20,13 +22,13 @@ public class TeleportBall : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		if(Mathf.Abs(BallRB.position.x) > 5.15f)
+		if(Mathf.Abs(BallRB.position.x) > wrapDistance)
 		{
-			BallRB.MovePosition(new Vector3(5.15f * -Mathf.Sign(BallRB.position.x), BallRB.position.y, BallRB.position.z));
+			BallRB.MovePosition(new Vector3(wrapDistance * -Mathf.Sign(BallRB.position.x), BallRB.position.y, BallRB.position.z));
 		}
-		if (Mathf.Abs(BallRB.position.z) > 5.15f)
+		if (Mathf.Abs(BallRB.position.z) > wrapDistance)
 		{
-			BallRB.MovePosition(new Vector3(BallRB.position.x, BallRB.position.y, 5.15f * -Mathf.Sign(BallRB.position.z)));
+			BallRB.MovePosition(new Vector3(BallRB.position.x, BallRB.position.y, wrapDistance * -Mathf.Sign(BallRB.position.z)));
 		}
 	}
 }
